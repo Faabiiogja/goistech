@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workspaceFilter version="1.0">
+    <filter root="/conf/goistech" mode="merge"/>
+    <filter root="/content/goistech" mode="merge"/>
+    <filter root="/content/dam/goistech" mode="merge">
+        <exclude pattern="/content/dam/goistech(/.*)?"/>
+        <include pattern="/content/dam/goistech/jcr:content(/.*)?"/>
+    </filter>
+    <filter root="/content/dam/goistech/asset.jpg" mode="merge"/>
+    <filter root="/content/experience-fragments/goistech" mode="merge"/>
+</workspaceFilter>
