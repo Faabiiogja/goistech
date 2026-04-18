@@ -1,0 +1,267 @@
+/**
+ * Footer Component — Gois Tech
+ * Aesthetic: Precision Engineering / Dark Obsidian + Electric Cyan
+ */
+
+/* ─── Footer Shell ───────────────────────────────────────────────── */
+.cmp-footer {
+  background: #080c14;
+  border-top: 1px solid #00e5ff40;
+  font-family: var(--gt-font-body, 'Outfit', system-ui, sans-serif);
+  color: var(--gt-text, #e8edf5);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle circuit-board grid texture */
+.cmp-footer::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(#1e2a3a22 1px, transparent 1px),
+    linear-gradient(90deg, #1e2a3a22 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+}
+
+/* ─── Inner — 3-column grid ──────────────────────────────────────── */
+.cmp-footer__inner {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 4rem 2rem 3rem;
+}
+
+/* ─── Brand Column ───────────────────────────────────────────────── */
+.cmp-footer__brand {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+}
+
+.cmp-footer__logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  width: fit-content;
+}
+
+.cmp-footer__logo:focus-visible {
+  outline: 2px solid #00e5ff;
+  outline-offset: 4px;
+  border-radius: 6px;
+}
+
+.cmp-footer__logo .cmp-footer__logo-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  background: #00e5ff;
+  color: #080c14;
+  font-family: var(--gt-font-mono, 'Space Mono', monospace);
+  font-size: 0.625rem;
+  font-weight: 700;
+  border-radius: 4px;
+  clip-path: polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 0 100%);
+  flex-shrink: 0;
+}
+
+.cmp-footer__logo .cmp-footer__logo-text {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: #e8edf5;
+}
+
+.cmp-footer__logo .cmp-footer__logo-text strong {
+  color: #00e5ff;
+  font-weight: 700;
+}
+
+.cmp-footer__tagline {
+  font-size: 0.8125rem;
+  color: #6b7a99;
+  line-height: 1.5;
+  margin: 0;
+  max-width: 240px;
+  letter-spacing: 0.005em;
+}
+
+/* ─── Nav Column ─────────────────────────────────────────────────── */
+.cmp-footer__nav {
+  padding-top: 0.125rem;
+}
+
+.cmp-footer__nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.cmp-footer__nav-item {
+  border-bottom: 1px solid #1e2a3a;
+}
+
+.cmp-footer__nav-item:first-child {
+  border-top: 1px solid #1e2a3a;
+}
+
+.cmp-footer__nav-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 0;
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: #6b7a99;
+  text-decoration: none;
+  letter-spacing: 0.01em;
+  transition: color 0.2s, padding-left 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
+
+.cmp-footer__nav-link::before {
+  content: '';
+  display: block;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #00e5ff;
+  opacity: 0;
+  flex-shrink: 0;
+  transition: opacity 0.2s;
+}
+
+.cmp-footer__nav-link:hover {
+  color: #e8edf5;
+  padding-left: 0.375rem;
+}
+
+.cmp-footer__nav-link:hover::before {
+  opacity: 1;
+}
+
+.cmp-footer__nav-link:focus-visible {
+  outline: 2px solid #00e5ff;
+  outline-offset: 2px;
+  border-radius: 4px;
+  color: #00e5ff;
+}
+
+/* ─── Social Column ──────────────────────────────────────────────── */
+.cmp-footer__social {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding-top: 0.125rem;
+}
+
+.cmp-footer__social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid #1e2a3a;
+  border-radius: 50%;
+  color: #6b7a99;
+  text-decoration: none;
+  transition:
+    border-color 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+    color 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+    background 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cmp-footer__social-link:hover {
+  border-color: #00e5ff;
+  color: #00e5ff;
+  background: #00e5ff14;
+  box-shadow: 0 0 12px #00e5ff30, 0 0 4px #00e5ff20;
+  transform: translateY(-2px);
+}
+
+.cmp-footer__social-link:focus-visible {
+  outline: 2px solid #00e5ff;
+  outline-offset: 2px;
+  color: #00e5ff;
+  border-color: #00e5ff;
+}
+
+.cmp-footer__social-icon {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+/* ─── Bottom Bar ─────────────────────────────────────────────────── */
+.cmp-footer__bottom {
+  position: relative;
+  background: #060a10;
+  border-top: 1px solid #1e2a3a;
+}
+
+.cmp-footer__bottom-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cmp-footer__copyright {
+  font-size: 0.75rem;
+  color: #6b7a99;
+  margin: 0;
+  letter-spacing: 0.02em;
+}
+
+/* ─── Responsive ─────────────────────────────────────────────────── */
+@media (max-width: 767px) {
+  .cmp-footer__inner {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 2.5rem 1rem 2rem;
+  }
+
+  .cmp-footer__social {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.625rem;
+  }
+
+  .cmp-footer__bottom-inner {
+    padding: 0.875rem 1rem;
+    text-align: center;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .cmp-footer__inner {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    padding: 3rem 1.5rem 2.5rem;
+  }
+
+  .cmp-footer__social {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .cmp-footer__brand {
+    grid-column: 1 / -1;
+  }
+}

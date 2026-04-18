@@ -2,3 +2,26 @@ project: goistech
 package: com.goistech.core
 group: Gois Tech
 configured: true
+
+# ─── Project Architecture ─────────────────────────────────────────
+# This is an AEM React SPA project (spa-project-core).
+# ALL components MUST follow the full SPA pattern:
+#
+#   1. AEM side (HTL + Sling Model):
+#      - Sling Model adaptable: SlingHttpServletRequest (NOT Resource)
+#      - Implements ComponentExporter for JSON export
+#      - Uses @Exporter annotation
+#      - HTL template is minimal or empty (React renders the UI)
+#
+#   2. React side (ui.frontend/src/components/):
+#      - React component in ui.frontend/src/components/<Name>/<Name>.js
+#      - CSS in ui.frontend/src/components/<Name>/<Name>.css
+#      - Registered via MapTo('goistech/components/<name>') in import-components.js
+#
+#   3. NO server-side HTML rendering for content components.
+#      HTL is only used for the page shell (body.html, customheaderlibs.html).
+#
+# NEVER create HTL-only components without React counterparts.
+# ALWAYS create the React component AND the MapTo registration.
+spa_mode: true
+frontend_framework: react

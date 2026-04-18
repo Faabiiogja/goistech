@@ -1,0 +1,396 @@
+/**
+ * Header Component — Gois Tech
+ * Aesthetic: Precision Engineering / Dark Obsidian + Electric Cyan
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Mono:wght@700&display=swap');
+
+/* ─── Design Tokens ─────────────────────────────────────────────── */
+:root {
+  --gt-bg-deep:       #080c14;
+  --gt-bg-header:     #0d1117;
+  --gt-bg-header-blur:#0d1117e0;
+  --gt-accent:        #00e5ff;
+  --gt-accent-dim:    #00e5ff26;
+  --gt-accent-hover:  #33ecff;
+  --gt-text:          #e8edf5;
+  --gt-text-muted:    #6b7a99;
+  --gt-border:        #1e2a3a;
+  --gt-border-accent: #00e5ff40;
+  --gt-font-body:     'Outfit', system-ui, -apple-system, sans-serif;
+  --gt-font-mono:     'Space Mono', 'Courier New', monospace;
+  --gt-header-h:      68px;
+  --gt-header-h-sm:   60px;
+  --gt-max-w:         1280px;
+  --gt-radius:        6px;
+  --gt-ease:          cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ─── Reset scoped to header ─────────────────────────────────────── */
+.cmp-header *,
+.cmp-header *::before,
+.cmp-header *::after {
+  box-sizing: border-box;
+}
+
+/* ─── Header Shell ───────────────────────────────────────────────── */
+.cmp-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  height: var(--gt-header-h);
+  background: var(--gt-bg-header);
+  border-bottom: 1px solid var(--gt-border);
+  font-family: var(--gt-font-body);
+  transition:
+    height 0.3s var(--gt-ease),
+    box-shadow 0.3s var(--gt-ease),
+    background 0.3s var(--gt-ease),
+    border-color 0.3s var(--gt-ease);
+
+  /* Subtle grid texture via background-image */
+  background-image:
+    linear-gradient(var(--gt-border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--gt-border) 1px, transparent 1px);
+  background-size: 40px 40px;
+  background-position: -1px -1px;
+}
+
+/* Scrolled state — slimmer, glassy, more defined */
+.cmp-header--scrolled {
+  height: var(--gt-header-h-sm);
+  background: var(--gt-bg-header-blur);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border-bottom-color: var(--gt-border-accent);
+  box-shadow:
+    0 1px 0 var(--gt-border-accent),
+    0 4px 32px #00000060;
+}
+
+/* ─── Inner Layout ───────────────────────────────────────────────── */
+.cmp-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  max-width: var(--gt-max-w);
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* ─── Logo ───────────────────────────────────────────────────────── */
+.cmp-header__logo {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.cmp-header__logo:focus-visible {
+  outline: 2px solid var(--gt-accent);
+  outline-offset: 4px;
+  border-radius: var(--gt-radius);
+}
+
+.cmp-header__logo-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: var(--gt-accent);
+  color: var(--gt-bg-deep);
+  font-family: var(--gt-font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  border-radius: 4px;
+  flex-shrink: 0;
+  position: relative;
+  /* Corner notch effect */
+  clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 0 100%);
+  transition: box-shadow 0.2s var(--gt-ease);
+}
+
+.cmp-header__logo:hover .cmp-header__logo-icon {
+  box-shadow: 0 0 16px var(--gt-accent), 0 0 4px var(--gt-accent);
+}
+
+.cmp-header__logo-text {
+  font-size: 1.0625rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--gt-text);
+  transition: color 0.2s;
+}
+
+.cmp-header__logo-text strong {
+  color: var(--gt-accent);
+  font-weight: 700;
+}
+
+/* ─── Navigation ─────────────────────────────────────────────────── */
+.cmp-header__nav {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+/* Core Component Navigation styles */
+.cmp-header__nav .cmp-navigation__group {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.cmp-header__nav .cmp-navigation__item {
+  position: relative;
+}
+
+.cmp-header__nav .cmp-navigation__item-link {
+  display: block;
+  padding: 0.4rem 0.875rem;
+  font-family: var(--gt-font-body);
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: var(--gt-text-muted);
+  text-decoration: none;
+  border-radius: var(--gt-radius);
+  transition:
+    color 0.2s var(--gt-ease),
+    background 0.2s var(--gt-ease);
+  position: relative;
+}
+
+.cmp-header__nav .cmp-navigation__item-link::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  transform: translateX(-50%) scaleX(0);
+  width: calc(100% - 1.75rem);
+  height: 1px;
+  background: var(--gt-accent);
+  transition: transform 0.25s var(--gt-ease);
+  transform-origin: center;
+}
+
+.cmp-header__nav .cmp-navigation__item-link:hover,
+.cmp-header__nav .cmp-navigation__item-link:focus-visible {
+  color: var(--gt-text);
+  background: var(--gt-accent-dim);
+  outline: none;
+}
+
+.cmp-header__nav .cmp-navigation__item-link:hover::after,
+.cmp-header__nav .cmp-navigation__item-link:focus-visible::after {
+  transform: translateX(-50%) scaleX(1);
+}
+
+.cmp-header__nav .cmp-navigation__item--active .cmp-navigation__item-link {
+  color: var(--gt-accent);
+}
+
+.cmp-header__nav .cmp-navigation__item--active .cmp-navigation__item-link::after {
+  transform: translateX(-50%) scaleX(1);
+}
+
+/* ─── CTA Button ─────────────────────────────────────────────────── */
+.cmp-header__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.5rem 1.25rem;
+  background: var(--gt-accent);
+  color: var(--gt-bg-deep);
+  font-family: var(--gt-font-body);
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  border-radius: 100px;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+  transition:
+    background 0.2s var(--gt-ease),
+    color 0.2s var(--gt-ease),
+    box-shadow 0.2s var(--gt-ease),
+    transform 0.15s var(--gt-ease);
+}
+
+/* Sheen sweep on hover */
+.cmp-header__cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 40%, #ffffff30 50%, transparent 60%);
+  transform: translateX(-100%);
+  transition: transform 0.4s var(--gt-ease);
+}
+
+.cmp-header__cta:hover {
+  background: var(--gt-accent-hover);
+  box-shadow: 0 0 20px var(--gt-accent), 0 4px 12px #00e5ff30;
+  transform: translateY(-1px);
+  color: var(--gt-bg-deep);
+}
+
+.cmp-header__cta:hover::before {
+  transform: translateX(100%);
+}
+
+.cmp-header__cta:active {
+  transform: translateY(0);
+  box-shadow: 0 0 8px var(--gt-accent);
+}
+
+.cmp-header__cta:focus-visible {
+  outline: 2px solid var(--gt-accent);
+  outline-offset: 3px;
+}
+
+/* ─── Hamburger ──────────────────────────────────────────────────── */
+.cmp-header__menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  border: 1px solid var(--gt-border);
+  border-radius: var(--gt-radius);
+  cursor: pointer;
+  padding: 0;
+  transition: border-color 0.2s, background 0.2s;
+  flex-shrink: 0;
+}
+
+.cmp-header__menu-toggle:hover {
+  border-color: var(--gt-accent);
+  background: var(--gt-accent-dim);
+}
+
+.cmp-header__menu-toggle:focus-visible {
+  outline: 2px solid var(--gt-accent);
+  outline-offset: 2px;
+}
+
+.cmp-header__menu-toggle-bar {
+  display: block;
+  width: 18px;
+  height: 1.5px;
+  background: var(--gt-text);
+  border-radius: 2px;
+  transition:
+    transform 0.3s var(--gt-ease),
+    opacity 0.2s,
+    width 0.3s var(--gt-ease);
+  transform-origin: center;
+}
+
+/* Animated to X when open */
+.cmp-header__menu-toggle[aria-expanded="true"] .cmp-header__menu-toggle-bar:nth-child(1) {
+  transform: translateY(6.5px) rotate(45deg);
+}
+.cmp-header__menu-toggle[aria-expanded="true"] .cmp-header__menu-toggle-bar:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+.cmp-header__menu-toggle[aria-expanded="true"] .cmp-header__menu-toggle-bar:nth-child(3) {
+  transform: translateY(-6.5px) rotate(-45deg);
+}
+
+/* ─── Responsive ─────────────────────────────────────────────────── */
+@media (max-width: 767px) {
+  .cmp-header__inner {
+    padding: 0 1rem;
+    gap: 1rem;
+  }
+
+  .cmp-header__menu-toggle {
+    display: flex;
+    order: 3;
+  }
+
+  .cmp-header__cta {
+    display: none; /* Shown inside mobile nav */
+  }
+
+  .cmp-header__nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--gt-bg-header);
+    border-bottom: 1px solid var(--gt-border);
+    padding: 0;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transition:
+      max-height 0.35s var(--gt-ease),
+      opacity 0.25s var(--gt-ease),
+      padding 0.25s var(--gt-ease);
+    justify-content: flex-start;
+  }
+
+  .cmp-header__nav.is-open {
+    max-height: 400px;
+    opacity: 1;
+    pointer-events: auto;
+    padding: 0.75rem 0 1rem;
+  }
+
+  .cmp-header__nav .cmp-navigation__group {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 0 1rem;
+  }
+
+  .cmp-header__nav .cmp-navigation__item-link {
+    padding: 0.75rem 0.5rem;
+    font-size: 1rem;
+    border-radius: 0;
+    border-bottom: 1px solid var(--gt-border);
+  }
+
+  .cmp-header__nav .cmp-navigation__item-link::after {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .cmp-header__inner {
+    padding: 0 1.5rem;
+    gap: 1rem;
+  }
+
+  .cmp-header__nav .cmp-navigation__item-link {
+    padding: 0.4rem 0.625rem;
+    font-size: 0.8125rem;
+  }
+}
+
+/* ─── Author mode empty state ────────────────────────────────────── */
+.cmp-header--empty {
+  border: 2px dashed var(--gt-border-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gt-text-muted);
+  font-family: var(--gt-font-body);
+  font-size: 0.875rem;
+}
