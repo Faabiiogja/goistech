@@ -1,0 +1,5 @@
+{
+  "enabledPlugins": {
+    "aem-cloud-service@adobe-skills": true
+  }
+}

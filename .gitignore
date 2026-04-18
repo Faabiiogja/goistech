@@ -104,3 +104,9 @@ reports/
 
 # Others
 dispatcher/src/conf.d/variables/default.vars
+
+# MCP server config (contains credentials)
+.mcp.json
+
+# Claude Code personal settings
+.claude/settings.local.json
