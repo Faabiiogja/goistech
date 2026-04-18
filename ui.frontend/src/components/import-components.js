@@ -92,3 +92,15 @@ const TextEditConfig = {
 };
 
 MapTo('goistech/components/text')(LazyTextComponent, TextEditConfig);
+
+const LazyTextImageComponent = withAsyncImport(() => import('./TextImage/TextImage'));
+
+const TextImageEditConfig = {
+    emptyLabel: 'Text Image',
+
+    isEmpty: function (props) {
+        return !props || (!props.title && !props.text);
+    }
+};
+
+MapTo('goistech/components/text-image')(LazyTextImageComponent, TextImageEditConfig);
